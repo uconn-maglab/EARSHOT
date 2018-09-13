@@ -7,10 +7,10 @@ def Correlation2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second dimension.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second dimension.
-    Returns:        
+    Returns:
         correlation_Tensor: A `Tensor` representing the correlation between the rows. Size is (M x L)
         p_Value_Tensor: A `Tensor` representing the p-value of correlation. Size is (M x L)
-    """    
+    """
     avgsub_X_Tensor = x - tf.reduce_mean(x, axis = 1, keepdims=True);  #[M, N]
     avgsub_Y_Tensor = y - tf.reduce_mean(y, axis = 1, keepdims=True);  #[L, N]
 
@@ -32,7 +32,7 @@ def Batch_Correlation2D(x, y):
     Args:
         x: 3d tensor (BATCHxMxN). The number of first and third dimension should be same to y's first and third dimension.
         y: 3d tensor (BATCHxLxN). The number of first and third dimension should be same to x's first and third dimension.
-    Returns:        
+    Returns:
         correlation_Tensor: A `Tensor` representing the correlation between the rows. Size is (BATCH x M x L)
         p_Value_Tensor: A `Tensor` representing the p-value of correlation. Size is (BATCH x M x L)
     """
@@ -41,7 +41,7 @@ def Batch_Correlation2D(x, y):
     t_Max = tf.reduce_max(tf.abs(t))
     x = x / t_Min * t_Max;
     y = y / t_Min * t_Max;
-    
+
     avgsub_X_Tensor = x - tf.reduce_mean(x, axis = 2, keepdims=True);  #[Batch, M, N]
     avgsub_Y_Tensor = y - tf.reduce_mean(y, axis = 2, keepdims=True);  #[Batch, L, N]
 
@@ -64,10 +64,10 @@ def MDS(x, dimension = 2):
     Args:
         x: 2d tensor (NxN). The distance matrix.
         dimension: int32 or scalar tensor. The compressed dimension.
-    Returns:        
+    Returns:
         mds_Coordinate: A `Tensor` representing the compressed coordinates. Size is (N x Dimension)
     """
-    element_Number = tf.shape(x)[1];    
+    element_Number = tf.shape(x)[1];
     j = tf.eye(element_Number) - tf.cast(1/element_Number, tf.float32) * tf.ones_like(x);
     b = -0.5 * (j @ tf.pow(x, 2) @ j);
     eigen_Value, eigen_Vector = tf.self_adjoint_eig(b)
@@ -85,7 +85,7 @@ def Cosine_Similarity2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second dimension.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second dimension.
-    Returns:        
+    Returns:
         cosine_Similarity: A `Tensor` representing the cosine similarity between the rows. Size is (M x L)
     """
     print(x)
@@ -97,13 +97,13 @@ def Cosine_Similarity2D(x, y):
 
     return cosine_Similarity;
 
-def Batch_Cosine_Similarity2D(x, y):    
+def Batch_Cosine_Similarity2D(x, y):
     """
     Compute the cosine similarity between each row of two tensors.
     Args:
         x: 3d tensor (BATCHxMxN). The number of first and third dimension should be same to y's first and third dimension.
         y: 3d tensor (BATCHxLxN). The number of first and third dimension should be same to x's first and third dimension.
-    Returns:        
+    Returns:
         cosine_Similarity: A `Tensor` representing the cosine similarity between the rows. Size is (M x L) (BATCH x M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [2]), multiples = [1, 1, tf.shape(y)[1], 1]);   #[Batch, M, L, N]
@@ -120,7 +120,7 @@ def Mean_Squared_Error2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second dimension.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second dimension.
-    Returns:        
+    Returns:
         mean_Squared_Error: A `Tensor` representing the mean squared error between the rows. Size is (M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [1]), multiples = [1, tf.shape(y)[0], 1]);   #[M, L, N]
@@ -136,7 +136,7 @@ def Batch_Mean_Squared_Error2D(x, y):
     Args:
         x: 3d tensor (BATCHxMxN). The number of first and third dimension should be same to x's first and third dimension.
         y: 3d tensor (BATCHxLxN). The number of first and third dimension should be same to x's first and third dimension.
-    Returns:        
+    Returns:
         mean_Squared_Error: A `Tensor` representing the mean squared error between the rows. Size is (BATCH x M x L)
     """
 
@@ -154,7 +154,7 @@ def Euclidean_Distance2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second dimension.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second dimension.
-    Returns:        
+    Returns:
         euclidean_Distance: A `Tensor` representing the Euclidean distance between the rows. Size is (M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [1]), multiples = [1, tf.shape(y)[0], 1]);   #[M, L, N]
@@ -170,7 +170,7 @@ def Batch_Euclidean_Distance2D(x, y):
     Args:
         x: 3d tensor (BATCHxMxN). The number of first and third dimension should be same to x's first and third dimension.
         y: 3d tensor (BATCHxLxN). The number of first and third dimension should be same to x's first and third dimension.
-    Returns:        
+    Returns:
         euclidean_Distance: A `Tensor` representing the Euclidean distance between the rows. Size is (BATCH x M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [2]), multiples = [1, 1, tf.shape(y)[1], 1]);   #[Batch, M, L, N]
@@ -187,7 +187,7 @@ def Cross_Entropy2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second dimension.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second dimension.
-    Returns:        
+    Returns:
         cosine_Similarity: A `Tensor` representing the cross entropy between the rows. Size is (M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [1]), multiples = [1, tf.shape(y)[0], 1]);   #[M, L, N]
@@ -203,7 +203,7 @@ def Batch_Cross_Entropy2D(x, y):
     Args:
         x: 3d tensor (BATCHxMxN). The number of first and third dimension should be same to x's first and third dimension.
         y: 3d tensor (BATCHxLxN). The number of first and third dimension should be same to x's first and third dimension.
-    Returns:        
+    Returns:
         cosine_Similarity: A `Tensor` representing the cross entropy between the rows. Size is (BATCH x M x L)
     """
     tiled_X = tf.tile(tf.expand_dims(x, [2]), multiples = [1, 1, tf.shape(y)[1], 1]);   #[Batch, M, L, N]
@@ -216,22 +216,22 @@ def Batch_Cross_Entropy2D(x, y):
 
 def Z_Score(x, axis = None):
     """
-    Calculate the z score of x.    
+    Calculate the z score of x.
     Args:
         x: nd tensor.
         axis: int or list of int. All values which are on the selected axes are regarded as a single group.
-    Returns:        
+    Returns:
         z: 2d tensor (MxL). The z-score. If the sign of z-score is positive, the x is bigger than y.
         p: 2d tensor (MxL). The p-value based on the two-sided test.
     """
     if type(axis) == int:
         axis = [axis];
-    
-    m, v = tf.nn.moments(x, axes=axis);    
+
+    m, v = tf.nn.moments(x, axes=axis);
     for selected_Axis in axis:
         m = tf.expand_dims(m, axis=selected_Axis);
         v = tf.expand_dims(v, axis=selected_Axis);
-    
+
     multiples = [1] * len(x.get_shape());
     for selected_Axis in axis:
         multiples[selected_Axis] = tf.shape(x)[selected_Axis];
@@ -251,7 +251,7 @@ def Wilcoxon_Signed_Rank_Test2D(x, y):
     Args:
         x: 2d tensor (MxN). The number of second dimension should be same to y's second.
         y: 2d tensor (LxN). The number of second dimension should be same to x's second.
-    Returns:        
+    Returns:
         z: 2d tensor (MxL). The z-score. If the sign of z-score is positive, the x is bigger than y.
         p: 2d tensor (MxL). The p-value based on the two-sided test.
     """
@@ -272,7 +272,7 @@ def Wilcoxon_Signed_Rank_Test2D(x, y):
         tf.expand_dims(tf.expand_dims(tf.range(tf.shape(subtract_XY)[1]), axis = 0), axis = 2),
         multiples=[tf.shape(subtract_XY)[0], 1, tf.shape(subtract_XY)[2]]
         )    #[M, L, N]
-    index_Dimension3 = tf.nn.top_k(-abs_Subtract_XY, k=tf.shape(abs_Subtract_XY)[2], sorted=False).indices   #[M, L, N]    
+    index_Dimension3 = tf.nn.top_k(-abs_Subtract_XY, k=tf.shape(abs_Subtract_XY)[2], sorted=False).indices   #[M, L, N]
 
     rank_Map = tf.stack([index_Dimension1, index_Dimension2, index_Dimension3], axis=3) #[M, L, N, 3]
     mapped_Sign_X = tf.gather_nd(sign_Subtract_XY, indices= rank_Map);
@@ -281,7 +281,7 @@ def Wilcoxon_Signed_Rank_Test2D(x, y):
         tf.expand_dims(tf.expand_dims(tf.cast(tf.range(tf.shape(subtract_XY)[2]), dtype=tf.float32), axis = 0), axis = 1),
         multiples=[tf.shape(subtract_XY)[0], tf.shape(subtract_XY)[1], 1]
         )    #[M, L, N]
-        
+
     wilcoxon_Value = tf.reduce_sum(mapped_Sign_X * (tiled_Range + 1), axis=2);  #[M, L]
 
     z_Score = wilcoxon_Value / tf.sqrt(vector_Size * (vector_Size + 1) * (2* vector_Size + 1) / 6);
@@ -302,7 +302,7 @@ def Wilcoxon_Rank_Sum_Test2D(x, y):
     Args:
         x: 2d tensor (MxA).
         y: 2d tensor (LxB).
-    Returns:        
+    Returns:
         z: 2d tensor (MxL). The z-score. If the sign of z-score is positive, the x's mean is bigger than y's.
         p: 2d tensor (MxL). The p-value based on the two-sided test.
     """
@@ -313,9 +313,9 @@ def Wilcoxon_Rank_Sum_Test2D(x, y):
     tiled_Y = tf.tile(tf.expand_dims(y, [0]), multiples = [tf.shape(x)[0], 1, 1]);   #[M, L, B]
 
     concat_XY = tf.concat([tiled_X, tiled_Y], axis=2)   #[M, L, (A+B)]
-    
+
     rank_Map = tf.cast(tf.nn.top_k(-concat_XY, k=tf.shape(concat_XY)[2], sorted=False).indices, dtype=tf.float32);   #[M, L, (A+B)]
-    
+
     y_Map = tf.clip_by_value(rank_Map - x_Size + 1, clip_value_min=0, clip_value_max=1); #[M, L, (A+B)]
 
     tiled_Range = tf.tile(
@@ -324,11 +324,11 @@ def Wilcoxon_Rank_Sum_Test2D(x, y):
         )    #[M, L, (A+B)]
 
     sum_Rank_Y = tf.reduce_sum(y_Map * tiled_Range, axis=2);  #[M, L]
-    
-    wilcoxon_Value = x_Size * y_Size + (y_Size * (y_Size + 1) / 2) - sum_Rank_Y;    
+
+    wilcoxon_Value = x_Size * y_Size + (y_Size * (y_Size + 1) / 2) - sum_Rank_Y;
 
     mean_Wilconxon = x_Size * y_Size / 2;   #Because, W1 + W2 = n1n2.
-    s = tf.sqrt(x_Size * y_Size * (x_Size + y_Size + 1) / 12)    
+    s = tf.sqrt(x_Size * y_Size * (x_Size + y_Size + 1) / 12)
     z_Score = (wilcoxon_Value - mean_Wilconxon) / s;
     p_Value = tf.cast(1 - tf.erf(tf.abs(tf.cast(z_Score, tf.float64)) / tf.sqrt(tf.cast(2.0, tf.float64))), tf.float32);    #To know more detail p-value (float32 cannot cover z-score which is over 5.6)
 
@@ -338,7 +338,7 @@ def Wilcoxon_Rank_Sum_Test2D(x, y):
     return z_Score, p_Value;
 
 if __name__ == "__main__":
-    with tf.Session() as tf_Session:        
+    with tf.Session() as tf_Session:
         import numpy as np;
 
         #x_P = tf.placeholder(tf.float32, shape=[None, 256, None]);
@@ -361,14 +361,14 @@ if __name__ == "__main__":
         #x = np.array([[305, 16, 122, 68]])
         #y = np.array([[25, 63, 84, 103]])
         x = np.array([[0.093090194, 0.268623055, 0.516203482, 0.67306552, 0.797922431, 0.322991788, 0.92960736, 0.995060907, 0.624005894, 0.385368098, 0.786522125]])
-        y = np.array([[0.290919606, 0.805307853, 0.621864781, 0.569390926, 0.626139531, 0.881142382, 0.920040644, 0.264862919, 0.012541362, 0.617295819, 0.171516068]])        
-        
+        y = np.array([[0.290919606, 0.805307853, 0.621864781, 0.569390926, 0.626139531, 0.881142382, 0.920040644, 0.264862919, 0.012541362, 0.617295819, 0.171516068]])
+
         x_P = tf.placeholder(tf.float32, shape=[None, None]);
         y_P = tf.placeholder(tf.float32, shape=[None, None]);
 
         t = Wilcoxon_Rank_Sum_Test2D(x_P, y_P);
 
         e,f = tf_Session.run(t, feed_dict={x_P:x, y_P:y});
-                
+
         print(e);
         print(f);

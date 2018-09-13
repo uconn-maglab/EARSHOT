@@ -22,7 +22,7 @@ class SCRNStateTuple(_SCRNStateTuple):
 class SCRNCell(RNNCell):
     def __init__(
         self,
-        num_units,        
+        num_units,
         initializer= None,
         leakage = 0.95,
         use_bias = False,
@@ -33,7 +33,7 @@ class SCRNCell(RNNCell):
         name=None
         ):
         super(SCRNCell, self).__init__(_reuse=reuse, name=name)
-        self._num_units = num_units;        
+        self._num_units = num_units;
         self._initializer= initializer;
         self._leakage = leakage;
         self._use_bias = use_bias;
@@ -51,7 +51,7 @@ class SCRNCell(RNNCell):
     @property
     def state_size(self):
         return self._state_size;
-    
+
     @property
     def output_size(self):
         return self._output_size;
