@@ -1,5 +1,7 @@
 # Deeplistner User Guide
 
+* Download input file `Pattern_Dict.IM_Spectrogram.OM_SRV.AN_10.Size_10000.WL_10.pickle` [here](https://drive.google.com/file/d/1pujVHSPtwXWZiQeutFJwxdsz1mz0Lddi/view)
+
 * Before starting, Python 3.x and two python libraries should be installed in your environment to use this script: Tensorflow, Librosa
 
 1. Simulation execution
