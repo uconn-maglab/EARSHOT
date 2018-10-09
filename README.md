@@ -1,4 +1,4 @@
-# Deeplistner User Guide
+# EARS User Guide
 
 * Download input file `Pattern_Dict.IM_Spectrogram.OM_SRV.AN_10.Size_10000.WL_10.pickle` [here](https://drive.google.com/file/d/1pujVHSPtwXWZiQeutFJwxdsz1mz0Lddi/view)
 
@@ -6,7 +6,7 @@
 
 1. Simulation execution
 
-    * Deeplistener execution is done at the terminal (command console for Windows).
+    * EARS execution is done at the terminal (command console for Windows).
 
     * You can change the parameters as needed. The following shows the meaning of each parameter:
 
