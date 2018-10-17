@@ -1088,7 +1088,7 @@ if __name__ == "__main__":
 
     if not argument_Dict["mode"] is None and argument_Dict["mode"].lower() == "mix":
         Mix_Result_Visualizer_All(
-            extract_Dir_Name = "D:/Deep_Listener_Results/IDX_{}".format(argument_Dict["index"]),
+            extract_Dir_Name = argument_Dict["folder"],
             result_File_Name_Dict = {
                 0: "000000.pickle",
                 1000: "001000.pickle",
@@ -1105,7 +1105,7 @@ if __name__ == "__main__":
 
     elif not argument_Dict["mode"] is None and argument_Dict["mode"].lower() == "rt":
         Mix_Result_RT_All(
-            extract_Dir_Name = "D:/Deep_Listener_Results/IDX_{}".format(argument_Dict["index"])
+            extract_Dir_Name = argument_Dict["folder"]
             )
 
     elif argument_Dict["folder"] == None:        
