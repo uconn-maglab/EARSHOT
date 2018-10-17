@@ -72,3 +72,17 @@
     ```python
     python Result_Analysis.py -f ./IDX_0/IM_Spectrogram.HM_LSTM.OM_SRV.PM_Normal.Size_10000.H_512.WL_10.NR.Trimmed.EM_M.ET_Agnes.IDX_0
     ```
+    
+ * Use the following command to output the accuracy flow for all patterns of all simulations of each talker in the specific index:
+
+    ```python
+    python Result_Analysis.py -m mix -idx 0
+    ```
+    
+    To do this, however, modify the 'result_File_Name_Dict' parameter of line 1092 in the 'Result_Analysis.py' to match the parameter you set (or the data you need).
+    
+ * Use the following command to output the reaction time for all patterns of all simulations in the specific index and the activation flow for each category of each talker:
+
+    ```python
+    python Result_Analysis.py -m rt -idx 0
+    ```
