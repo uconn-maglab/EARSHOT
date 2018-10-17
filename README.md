@@ -86,3 +86,15 @@
     ```python
     python Result_Analysis.py -m rt -f ./IDX_0
     ```
+
+* Use the following command to output the reaction time for all patterns of all simulations and the activation flow for each category of each talker in the specific folder (usually same index):
+
+    ```python
+    python Result_Analysis.py -m rt -f ./IDX_0
+    ```
+    
+* For a hidden analysis of a specific epoch of a specific simulation, use the command:
+
+    ```python
+    python Hidden_Analysis.Diphone.py -f ./IDX_0/IM_Spectrogram.HM_LSTM.OM_SRV.PM_Normal.Size_10000.H_512.WL_10.NR.Trimmed.EM_M.ET_Vicki.IDX_0 -e 8000 -ht LSTM -vd ./Diphones_wav
+    ```
