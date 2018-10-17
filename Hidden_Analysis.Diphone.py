@@ -417,7 +417,7 @@ if __name__ == "__main__":
 
     for focus in ["Front", "Back"]:
         for map_Type in ["PSI", "FSI"]:
-            for squeezing in ["Squeezed"]:
+            for squeezing in ["Normal", "Squeezed"]:
                 Export_Map(
                     map_Type= map_Type,
                     map_Dict= map_Dict[focus, map_Type, squeezing],
