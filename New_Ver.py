@@ -281,7 +281,7 @@ class Contradiction_Model:
                         print("Stopped.")
                         sys.exit();
 
-        checkpoint = self.extract_Dir + "/Checkpoint\\Checkpoint-" + str(self.pattern_Feeder.start_Epoch);
+        checkpoint = self.extract_Dir + "/Checkpoint/Checkpoint-" + str(self.pattern_Feeder.start_Epoch);
         try:
             self.tf_Saver.restore(self.tf_Session, checkpoint);
         except tf.errors.NotFoundError:
