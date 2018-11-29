@@ -227,7 +227,7 @@ class Contradiction_Model:
                 elif self.hidden_Type == "SCRN":
                     zero_RNN_State_Assign = tf.assign(
                         ref= previous_RNN_State,
-                        value = LSTMStateTuple(
+                        value = SCRNStateTuple(
                             s = tf.zeros(shape=(self.pattern_Feeder.batch_Size, self.hidden_Size)),
                             h = tf.zeros(shape=(self.pattern_Feeder.batch_Size, self.hidden_Size))
                             )
