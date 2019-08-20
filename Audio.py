@@ -17,8 +17,8 @@ def inv_preemphasis(x, preemphasis = 0.97):
   return signal.lfilter([1], [1, -preemphasis], x)
 
 
-def spectrogram(y, ref_level_db = 20, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000):
-    D = _stft(preemphasis(y), frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate)
+def spectrogram(y, ref_level_db = 20, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000, num_freq = 256):
+    D = _stft(preemphasis(y), frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate, num_freq = num_freq)
     S = _amp_to_db(np.abs(D)) - ref_level_db
     return _normalize(S)
 
@@ -52,16 +52,16 @@ def find_endpoint(wav, threshold_db=-40, min_silence_sec=0.8, sample_rate=8000):
     return len(wav)
 
 
-def _griffin_lim(S, griffin_lim_iters = 60):
+def _griffin_lim(S, griffin_lim_iters = 60, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000, num_freq= 256):
     '''librosa implementation of Griffin-Lim
     Based on https://github.com/librosa/librosa/issues/434
     '''
     angles = np.exp(2j * np.pi * np.random.rand(*S.shape))
     S_complex = np.abs(S).astype(np.complex)
-    y = _istft(S_complex * angles)
+    y = _istft(S_complex * angles, frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate, num_freq= num_freq)
     for i in range(griffin_lim_iters):
-        angles = np.exp(1j * np.angle(_stft(y)))
-        y = _istft(S_complex * angles)
+        angles = np.exp(1j * np.angle(_stft(y, frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate, num_freq= num_freq)))
+        y = _istft(S_complex * angles, frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate, num_freq= num_freq)
     return y
 
 def _griffin_lim_tensorflow(S, griffin_lim_iters = 60):
@@ -80,12 +80,12 @@ def _griffin_lim_tensorflow(S, griffin_lim_iters = 60):
         return tf.squeeze(y, 0)
 
 
-def _stft(y, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000):
-    n_fft, hop_length, win_length = _stft_parameters(frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate)
+def _stft(y, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000, num_freq = 256):
+    n_fft, hop_length, win_length = _stft_parameters(num_freq = num_freq, frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate)
     return librosa.stft(y=y, n_fft=n_fft, hop_length=hop_length, win_length=win_length)
 
-def _istft(y):
-    _, hop_length, win_length = _stft_parameters()
+def _istft(y, frame_shift_ms = 50, frame_length_ms = 50, sample_rate = 8000, num_freq= 256):
+    _, hop_length, win_length = _stft_parameters(num_freq= num_freq, frame_shift_ms = frame_shift_ms, frame_length_ms = frame_length_ms, sample_rate = sample_rate)
     return librosa.istft(y, hop_length=hop_length, win_length=win_length)
 
 def _stft_tensorflow(signals):
