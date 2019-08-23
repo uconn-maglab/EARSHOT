@@ -7,14 +7,14 @@ library(readr)
 library(viridis)
 library(cowplot)
 
-base_Dir <- 'C:/Users/Heejo_You/Desktop/Paper_2019/Results/IDX_4/'
+base_Dir <- 'C:/Users/Heejo_You/Desktop/Paper_2019/Results/IDX_6/'
 #talker_List <- c("Agnes", "Alex", "Bruce", "Fred", "Junior", "Kathy", "Princess", "Ralph", "Vicki", "Victoria")
 talker_List <- c("Agnes")
-epoch_List <- c(400)
+epoch_List <- c(800)
 hidden_Type <- 'LSTM'
 hidden_Unit <- 512
 exclusion_Mode <- 'M'
-index <- 4
+index <- 6
 
 unit_per_Row <- 8
 row_per_Page <- 2
@@ -47,7 +47,7 @@ for (epoch in epoch_List)
         }
         
         flow_Data$row_Name <- rownames(flow_Data)
-        flow_Data.Melt <- melt(flow_Data, id.vars = "row_Name", variable.name = 'time')
+        flow_Data.Melt <- melt(as.data.frame(flow_Data), id.vars = "row_Name", variable_name = 'time')
         flow_Data.Melt$unit_Index <- unit_Index
         
         flow_Data_List[[length(flow_Data_List) + 1]] <- flow_Data.Melt

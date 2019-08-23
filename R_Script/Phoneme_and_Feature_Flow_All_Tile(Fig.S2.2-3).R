@@ -61,7 +61,7 @@ for (epoch in epoch_List)
         
         flow_Data$row_Name.num <- rev(1:length(rownames(flow_Data)))
         key.flow_Data.row_Name <- data.frame(row_Name = rownames(flow_Data), row_Name.num = (1:length(rownames(flow_Data))))
-        mdf <- melt(flow_Data, id.vars="row_Name.num")
+        mdf <- melt(as.data.frame(flow_Data), id.vars="row_Name.num")
         mdf <- merge(mdf, key.flow_Data.row_Name, by = "row_Name.num", all.x = TRUE)
         ylabels = rev(rownames(flow_Data))
         
