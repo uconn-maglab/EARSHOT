@@ -8,7 +8,7 @@
 
 * All the commands below are done at the terminal (command console for Windows).
 
-* Python 3.x and several python libraries must be installed in your environment to use this script:
+* Python 3.x and several python libraries must be installed in your environment by following command:
     ```
     GPGPU using:
     pip install tensorflow-gpu, librosa, matplotlib
