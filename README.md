@@ -200,8 +200,8 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![]('./Example_Figures/Fig.4.B.png')
-![]('./Example_Figures/Fig.4.A.png')
+![](./Example_Figures/Fig.4.B.png)
+![](./Example_Figures/Fig.4.A.png)
 
 ### RSA permutation test
 
@@ -214,7 +214,7 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![]('./Example_Figures/Fig.S1.2.png')
+![](./Example_Figures/Fig.S1.2.png)
 
 ### Phoneme and feature flow
 
@@ -242,7 +242,7 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in `base_Dir`.
 
 #### Result example
-![]('./Example_Figures/Fig.S2.1.png')
+![](./Example_Figures/Fig.S2.1.png)
 
 ### Phoneme and feature flow tile
 
@@ -255,7 +255,7 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![]('./Example_Figures/Fig.S2.2.png')
+![](./Example_Figures/Fig.S2.2.png)
 
 ### Phoneme and feature flow compare
 
@@ -268,4 +268,4 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![]('./Example_Figures/Fig.S2.4.png')
+![](./Example_Figures/Fig.S2.4.png)
