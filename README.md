@@ -27,43 +27,43 @@ python EARShot.py [parameters]
 ### Parameters
 
 * `-ht LSTM|GRU|SCRN|BPTT`
-Determines the type of hidden layer. You can enter either LSTM, GRU, SCRN, or BPTT.
-This parameter is required.
+    * Determines the type of hidden layer. You can enter either LSTM, GRU, SCRN, or BPTT.
+    * This parameter is required.
 
 * `-hu <int>`
-Determines the size of the hidden layer. You can enter a positive integer.
-This parameter is required.
+    * Determines the size of the hidden layer. You can enter a positive integer.
+    * This parameter is required.
 
 * `-tt <int>`
-Set the frequency of the test during learning. You can enter a positive integer.
-This parameter is required.
+    * Set the frequency of the test during learning. You can enter a positive integer.
+    * This parameter is required.
 
 * `-se <int>`
-Set the model's start epoch. This parameter and the 'mf' parameter must be set when loading a previously learned model.
-The default value is 0.
+    * Set the model's start epoch. This parameter and the 'mf' parameter must be set when loading a previously learned model.
+    * The default value is 0.
 
 * `-me <int>`
-Set the ending epoch of the model. The default is 20000.
+    * Set the ending epoch of the model. The default is 20000.
 
 * `-em P|T|M`
-Set pattern exclusion method. You can choose between P (pattern based), T (talker based), or M (mix based).
-If set to P, 1/10 of each talker pattern will not be trained.
-When set to T, all patterns of one talker are excluded from the learning. The talker can be set via the 'et' parameter.
-When set to M, patterns are excluded as a mixture of the two methods.
-If not set, all patterns will be learned.
+    * Set pattern exclusion method. You can choose between P (pattern based), T (talker based), or M (mix based).
+    * If set to P, 1/10 of each talker pattern will not be trained.
+    * When set to T, all patterns of one talker are excluded from the learning. The talker can be set via the 'et' parameter.
+    * When set to M, patterns are excluded as a mixture of the two methods.
+    * If not set, all patterns will be learned.
 
 * `-et <talker>`
-Set which talker pattern is excluded from the learning.
-Applies if 'em' parameter is T or M, otherwise this parameter is ignored.
+    * Set which talker pattern is excluded from the learning.
+    * Applies if 'em' parameter is T or M, otherwise this parameter is ignored.
 
 * `-ei`
-If you enter this parameter, all exclusion settings above will be ignored.
-This is the parameter used to over-training all patterns after normal training.
-It is recommended that you do not assign the 'em' parameter if you want to learn all patterns from the beginning.
+    * If you enter this parameter, all exclusion settings above will be ignored.
+    * This is the parameter used to over-training all patterns after normal training.
+    * It is recommended that you do not assign the 'em' parameter if you want to learn all patterns from the beginning.
 
 * `-idx <int>`
-Attach an index tag to each result.
-This value does not affect the performance of the model.
+    * Attach an index tag to each result.
+    * This value does not affect the performance of the model.
 
 ### Execution examples
 
@@ -83,25 +83,25 @@ python Result_Analysis.py [parameters]
 ### Parameters
 
 * `-d <path>`
-Results directory to run the analysis on.
-This parameter is required.
-Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
+    * Results directory to run the analysis on.
+    * This parameter is required.
+    * Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
 
 * `-a <float>`
-Criterion in reaction time calculation of absolute method.
-The default is 0.7.
+    * Criterion in reaction time calculation of absolute method.
+    * The default is 0.7.
 
 * `-r <float>`
-Criterion in reaction time calculation of relative method.
-The default is 0.05.
+    * Criterion in reaction time calculation of relative method.
+    * The default is 0.05.
 
 * `-tw <int>`
-Width criterion in reaction time calculation of time dependent method used in the paper.
-The default is 10.
+    * Width criterion in reaction time calculation of time dependent method used in the paper.
+    * The default is 10.
 
 * `-th <float>`
-Height criterion in reaction time calculation of time dependent method used in the paper.
-The default is 0.05.
+    * Height criterion in reaction time calculation of time dependent method used in the paper.
+    * The default is 0.05.
 
 ### Execution examples
 
@@ -121,18 +121,18 @@ python Hidden_Analysis.py [parameters]
 ### Parameters
 
 * `-d <path>`
-Results directory to run the analysis on.
-This parameter is required.
-Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
+    * Results directory to run the analysis on.
+    * This parameter is required.
+    * Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
 
 * `-e <int>`
-The epoch to run the analysis on.
-This parameter is required.
+    * The epoch to run the analysis on.
+    * This parameter is required.
 
 * `-v <path>`
-diphone wav directory to be used for hidden analysis
-This parameter is required.
-Ex. `./Diphone_Wav`
+    * diphone wav directory to be used for hidden analysis
+    * This parameter is required.
+    * Ex. `./Diphone_Wav`
 
 ### Execution examples
 
@@ -151,21 +151,21 @@ python RSA_Analysis.py [parameters]
 ### Parameters
 
 * `-d <path>`
-Results directory to run the analysis on.
-This parameter is required.
-Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
+    * Results directory to run the analysis on.
+    * This parameter is required.
+    * Ex. `./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0`
 
 * `-e <int>`
-The epoch to run the analysis on.
-To proceed with the RSA analysis, you must first perform a hidden analysis on the configured epoch.
-This parameter is required.
+    * The epoch to run the analysis on.
+    * To proceed with the RSA analysis, you must first perform a hidden analysis on the configured epoch.
+    * This parameter is required.
 
 * `-c <float>`
-Criterion of the PSI and FSI map to be used.
+    * Criterion of the PSI and FSI map to be used.
 
 * `-pn <int>`
-Number of permutation tests
-The default is 1000000.
+    * Number of permutation tests
+    * The default is 1000000.
 
 ### Execution examples
 
@@ -187,8 +187,7 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in `base_Dir`.
 
 #### Result example
-
-<img src='https://user-images.githubusercontent.com/17133841/63608282-9368bf00-c5a2-11e9-958e-e8e8385bac12.png' width=50% height=50% /><img src='https://user-images.githubusercontent.com/17133841/63608288-96fc4600-c5a2-11e9-8b20-3fe72e3e1e24.png' width=50% height=50% />
+<img src='./Example_Figures/Fig.3.B.png' width=50% height=50% /><img src='./Example_Figures/Fig.3.A.png' width=50% height=50% />
 
 ### PSI and FSI
 
@@ -201,8 +200,8 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![E_800 PSI_with_Dendrogram W_(5,15) T_All D_Positive C_0 24 in_R](https://user-images.githubusercontent.com/17133841/63608536-420cff80-c5a3-11e9-99c5-a67b1aded43d.png)
-![E_800 FSI_with_Dendrogram W_(5,15) T_All D_Positive C_0 16 in_R](https://user-images.githubusercontent.com/17133841/63608550-49cca400-c5a3-11e9-87c9-3b4d36c63195.png)
+![]('./Example_Figures/Fig.4.B.png')
+![]('./Example_Figures/Fig.4.A.png')
 
 ### RSA permutation test
 
@@ -215,7 +214,7 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![RSA EARShot_to_Mesgarani PSI cosine](https://user-images.githubusercontent.com/17133841/63608695-9a440180-c5a3-11e9-96db-e54e15f38477.png)
+![]('./Example_Figures/Fig.S1.2.png')
 
 ### Phoneme and feature flow
 
@@ -228,7 +227,7 @@ python RSA_Analysis.py -d ./Results/IDX_0/HM_LSTM.H_512.EM_M.ET_AGNES.IDX_0 -e 2
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-<img src='https://user-images.githubusercontent.com/17133841/63608977-2bb37380-c5a4-11e9-9a8d-37a159c89b71.png' width=50% height=50% /><img src='https://user-images.githubusercontent.com/17133841/63609000-35d57200-c5a4-11e9-9601-4f4999a2124b.png' width=50% height=50% />
+<img src='./Example_Figures/Fig.6.png' width=50% height=50% /><img src='./Example_Figures/Fig.6.Feature.png' width=50% height=50% />
 
 ### Accuracy flow integration by talker
 
@@ -243,7 +242,7 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in `base_Dir`.
 
 #### Result example
-![Accuracy_Flow IDX_6 Integration_by_Talker](https://user-images.githubusercontent.com/17133841/63609130-85b43900-c5a4-11e9-9088-e07238ed308b.png)
+![]('./Example_Figures/Fig.S2.1.png')
 
 ### Phoneme and feature flow tile
 
@@ -256,7 +255,7 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![Phoneme Flow_Tile](https://user-images.githubusercontent.com/17133841/63609246-cc099800-c5a4-11e9-82e1-c3d6109bb79d.png)
+![]('./Example_Figures/Fig.S2.2.png')
 
 ### Phoneme and feature flow compare
 
@@ -269,4 +268,4 @@ This is different 'Accuracy and cosine similarity flow'. This analysis checks th
 3. Run. The result will be in each talker's hidden analysis directory.
 
 #### Result example
-![W_(0,35) Compare U_112-127 T_All](https://user-images.githubusercontent.com/17133841/63609334-fa877300-c5a4-11e9-897c-b22f6b20957b.png)
+![]('./Example_Figures/Fig.S2.4.png')
