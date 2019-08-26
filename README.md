@@ -4,7 +4,7 @@
 
 * Download input file `Pattern_Dict.IM_Spectrogram.OM_SRV.AN_10.Size_10000.WL_10.pickle` [here](https://drive.google.com/file/d/1pujVHSPtwXWZiQeutFJwxdsz1mz0Lddi/view)
 
-* Download diphone wav files for hidden analysis [here](http://?.?)
+* Download diphone wav files for hidden analysis [here](https://drive.google.com/file/d/1poWuCQ1_09jBSaIZJbj5KvBLl4HejdH3/view)
 
 * All the commands below are done at the terminal (command console for Windows).
 
